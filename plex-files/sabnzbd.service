@@ -1,0 +1,15 @@
+[Unit]
+Description=SABnzbd Usenet Client
+After=network.target
+
+[Service]
+Type=simple
+User=plex
+Group=plex 
+ExecStart=/usr/bin/python3 -OO /usr/bin/sabnzbdplus -s 0.0.0.0:8081
+ExecStop=/usr/bin/pkill sabnzbdplus
+Restart=always
+SyslogIdentifier=SABnzbd Usenet Client
+
+[Install]
+WantedBy=multi-user.target
